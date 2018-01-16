@@ -12,13 +12,14 @@ using AForge.Video.DirectShow;
 
 namespace BilboMVP
 {
+
     public partial class PantallaPrincipal : Form
     {
         //Variables globales
         public bool ExisteDispositivo = false;
         public FilterInfoCollection DispositivoDeVideo;
         public VideoCaptureDevice FuenteDeVideo = null;
-        public Bitmap Imagen = null;
+        public static Bitmap Imagen = null;
         public int NumImagen = 1;
         public PantallaPrincipal()
         {
@@ -103,12 +104,16 @@ namespace BilboMVP
         {
             IniciarFuenteDeVideo();
             TimerIniciado.Enabled = true;
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Imagen.Save(Application.StartupPath + "\\capturas\\captura" + NumImagen.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             NumImagen++;
+            Loggin loggin = new Loggin();
+            loggin.Show();
         }
 
         private void PantallaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
