@@ -24,5 +24,11 @@ namespace BilboMVP
             this.MaximumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
             this.MaximizeBox = true;
         }
+
+        private void btnContinuar_Click(object sender, EventArgs e)
+        {
+            PreguntaPanas Panas = new PreguntaPanas();
+            Panas.ShowDialog();
+        }
     }
 }
