@@ -20,6 +20,7 @@ namespace BilboMVP
         public FilterInfoCollection DispositivoDeVideo;
         public VideoCaptureDevice FuenteDeVideo = null;
         public static Bitmap Imagen = null;
+        public static Loggin loggin;
         public int NumImagen = 1;
         public PantallaPrincipal()
         {
@@ -104,17 +105,15 @@ namespace BilboMVP
         {
             IniciarFuenteDeVideo();
             TimerIniciado.Enabled = true;
-            
-            
+            this.Location = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
+            this.MinimumSize= System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
+            this.MaximumSize= System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
+            tableLayoutPanel1.MinimumSize = this.MinimumSize;
+            tableLayoutPanel1.MaximumSize = this.MaximumSize;
+            this.MaximizeBox = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Imagen.Save(Application.StartupPath + "\\capturas\\captura" + NumImagen.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            NumImagen++;
-            Loggin loggin = new Loggin();
-            loggin.Show();
-        }
+        
 
         private void PantallaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -131,6 +130,17 @@ namespace BilboMVP
                 TimerIniciado.Enabled = false;
             }
             
+        }
+
+        private void btnLoggin_Click(object sender, EventArgs e)
+        {
+            loggin = new Loggin();
+            loggin.Show();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

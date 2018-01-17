@@ -64,6 +64,18 @@
     <Compile Include="Loggin.Designer.cs">
       <DependentUpon>Loggin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mensaje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mensaje.Designer.cs">
+      <DependentUpon>Mensaje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreguntaContexto1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreguntaContexto1.Designer.cs">
+      <DependentUpon>PreguntaContexto1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -71,6 +83,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loggin.resx">
       <DependentUpon>Loggin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mensaje.resx">
+      <DependentUpon>Mensaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreguntaContexto1.resx">
+      <DependentUpon>PreguntaContexto1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
