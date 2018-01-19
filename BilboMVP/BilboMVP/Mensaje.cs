@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace BilboMVP
 {
@@ -21,13 +22,14 @@ namespace BilboMVP
 
         private void Mensaje_Load(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
             this.Location = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
             this.MinimumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
             this.MaximumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
             this.MaximizeBox = true;
             String[] nombres = PantallaPrincipal.Nombre_Alumno.Split(' ');
             lbSaludo.Text = "Buenos días "+nombres[0];
+            Cargar_Cuestionario();
+            //timer1.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -52,6 +54,64 @@ namespace BilboMVP
             {
                 Location = new Point(0, 0);
             }
+        }
+        private void Cargar_Cuestionario()
+        {
+            int sesion_cuestionario_id = -1;
+            string cadena_comando = "SELECT sesion_cuestionario_id FROM sesion WHERE fecha_sesion='" + PantallaPrincipal.Fecha_Actual + "' AND sesion_alumno_tipo_cuestionario='" + PantallaPrincipal.Tipo_Cuestionario_Alumno+"'";
+            MySqlCommand comando = new MySqlCommand(cadena_comando, PantallaPrincipal.conexion);
+            PantallaPrincipal.conexion.Open();
+            MySqlDataReader resultado = comando.ExecuteReader();
+            if (resultado.HasRows)
+            {
+                while (resultado.Read())
+                {
+                    sesion_cuestionario_id = Convert.ToInt16(resultado.GetValue(0));
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontro un cuestionario para ese alumno");
+            }
+            resultado.Close();
+            PantallaPrincipal.conexion.Close();
+            if (sesion_cuestionario_id >= 1)
+            {
+                //Contar los registros retornados por la consulta
+                MySqlCommand comandoCount = new MySqlCommand("SELECT COUNT(ID) numero_instruccion, tipo_instruccion, instruccion FROM cuestionarios WHERE cuestionario_id = '" + Convert.ToInt16(sesion_cuestionario_id) + "'", PantallaPrincipal.conexion);
+                PantallaPrincipal.conexion.Open();
+                //MySqlDataReader resultadoCount = comandoCount.ExecuteReader();
+                int filas = Convert.ToInt16(comandoCount.ExecuteScalar());
+                PantallaPrincipal.Cuestionario = new string[filas, 3];
+                MessageBox.Show(filas.ToString());
+                //resultadoCount.Close();
+                PantallaPrincipal.conexion.Close();
+                //
+                MySqlCommand comando2 = new MySqlCommand("SELECT numero_instruccion, tipo_instruccion, instruccion FROM cuestionarios WHERE cuestionario_id = '"+Convert.ToInt16(sesion_cuestionario_id)+"'", PantallaPrincipal.conexion);
+                PantallaPrincipal.conexion.Open();
+                MySqlDataReader resultado2 = comando2.ExecuteReader();
+                int index = 0;
+                if (resultado2.HasRows)
+                {
+                    while (resultado2.Read())
+                    {
+                        PantallaPrincipal.Cuestionario[index, 0] = resultado2.GetValue(0).ToString();
+                        PantallaPrincipal.Cuestionario[index, 1] = resultado2.GetValue(1).ToString();
+                        PantallaPrincipal.Cuestionario[index, 2] = resultado2.GetValue(2).ToString();
+                        index++;
+                    }
+                }
+                
+                for(int i=0; i<filas; i++)
+                {
+                    MessageBox.Show(PantallaPrincipal.Cuestionario[i,0].ToString()+ PantallaPrincipal.Cuestionario[i, 1].ToString()+ PantallaPrincipal.Cuestionario[i, 2].ToString());
+                }
+                
+                resultado2.Close();
+                PantallaPrincipal.conexion.Close();
+            }
+            
+
         }
     }
 }

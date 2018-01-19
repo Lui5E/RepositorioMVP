@@ -28,6 +28,8 @@ namespace BilboMVP
         public static int Grado_Alumno;
         public static string Grupo_Alumno;
         public static int Tipo_Cuestionario_Alumno;
+        //Objeto con el contenido del cuestionario a aplicar en la sesión
+        public static string[,] Cuestionario;
         //Variables que se pueden acceder desde otros formularios
         public static Bitmap Imagen = null;
         public static MySqlConnectionStringBuilder constructor;   //Creación del constructor de conexión

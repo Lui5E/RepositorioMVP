@@ -31,7 +31,7 @@ namespace BilboMVP
             TableLayoutPanel Princial = (TableLayoutPanel)PantallaPrincipal.Panas.Controls["tableLayoutPanelPrincipal"];
             TableLayoutPanel Secundario = (TableLayoutPanel)Princial.Controls["tableLayoutPanel1"];
             ((Label)Secundario.Controls["lbInstruccion"]).Text = "Señala en que medida te sentiste de la siguiente manera deacuerdo al contexto anterior";
-            //((Label)PantallaPrincipal.Panas.Controls["lbInstruccion"]).Text = "Señalar en que medida te sentiste deacuerdo al contexto anterior";
+            
         }
 
         private void PreguntaPanas_Move(object sender, EventArgs e)
