@@ -12,6 +12,8 @@ namespace BilboMVP
 {
     public partial class Mensaje : Form
     {
+        public int Ypos;
+        public int Xpos;
         public Mensaje()
         {
             InitializeComponent();
@@ -31,9 +33,23 @@ namespace BilboMVP
             PantallaPrincipal.loggin.Close();
             timer1.Stop();
             timer1.Enabled = false;
-            PreguntaContexto1 contexto1 = new PreguntaContexto1();
-            contexto1.ShowDialog();
+            PantallaPrincipal.contexto1 = new PreguntaContexto1();
+            PantallaPrincipal.contexto1.ShowDialog();
             this.Close();
+        }
+
+        private void tableLayoutPanel1_Move(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Mensaje_Move(object sender, EventArgs e)
+        {
+            
+            if ((Location.X!=0) || (Location.Y != 0))
+            {
+                Location = new Point(0, 0);
+            }
         }
     }
 }

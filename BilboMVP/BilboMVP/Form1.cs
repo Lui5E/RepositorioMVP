@@ -20,7 +20,9 @@ namespace BilboMVP
         public FilterInfoCollection DispositivoDeVideo;
         public VideoCaptureDevice FuenteDeVideo = null;
         public static Bitmap Imagen = null;
-        public static Loggin loggin;
+        public static Loggin loggin;        //Instancia de formulario Loggin
+        public static PreguntaContexto1 contexto1;  //Instancia de formulario Contexto
+        public static PreguntaPanas Panas;  //Intancia de formulario Panas
         public int NumImagen = 1;
         public PantallaPrincipal()
         {

@@ -30,12 +30,12 @@
         {
             this.tableLayoutPanelPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lbSaludo = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lbInstruccion = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.txbRespuesta = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lbMensajeBoton = new System.Windows.Forms.Label();
             this.btnContinuar = new System.Windows.Forms.Button();
             this.tableLayoutPanelPrincipal.SuspendLayout();
@@ -79,6 +79,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(705, 88);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // lbSaludo
+            // 
+            this.lbSaludo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbSaludo.AutoSize = true;
+            this.lbSaludo.Font = new System.Drawing.Font("Arial Narrow", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSaludo.Location = new System.Drawing.Point(277, 22);
+            this.lbSaludo.Name = "lbSaludo";
+            this.lbSaludo.Size = new System.Drawing.Size(149, 44);
+            this.lbSaludo.TabIndex = 0;
+            this.lbSaludo.Text = "Hola Luis";
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
@@ -93,6 +104,19 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(705, 55);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // lbInstruccion
+            // 
+            this.lbInstruccion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbInstruccion.AutoSize = true;
+            this.lbInstruccion.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInstruccion.Location = new System.Drawing.Point(108, 0);
+            this.lbInstruccion.Name = "lbInstruccion";
+            this.lbInstruccion.Size = new System.Drawing.Size(487, 55);
+            this.lbInstruccion.TabIndex = 0;
+            this.lbInstruccion.Text = "Escribe aquí abajo como te fue el fin de semana.";
             // 
             // tableLayoutPanel3
             // 
@@ -109,6 +133,16 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(705, 194);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
+            // txbRespuesta
+            // 
+            this.txbRespuesta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txbRespuesta.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbRespuesta.Location = new System.Drawing.Point(108, 3);
+            this.txbRespuesta.Multiline = true;
+            this.txbRespuesta.Name = "txbRespuesta";
+            this.txbRespuesta.Size = new System.Drawing.Size(487, 188);
+            this.txbRespuesta.TabIndex = 0;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 3;
@@ -124,40 +158,6 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(705, 79);
             this.tableLayoutPanel4.TabIndex = 3;
-            // 
-            // lbSaludo
-            // 
-            this.lbSaludo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbSaludo.AutoSize = true;
-            this.lbSaludo.Font = new System.Drawing.Font("Arial Narrow", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSaludo.Location = new System.Drawing.Point(277, 22);
-            this.lbSaludo.Name = "lbSaludo";
-            this.lbSaludo.Size = new System.Drawing.Size(149, 44);
-            this.lbSaludo.TabIndex = 0;
-            this.lbSaludo.Text = "Hola Luis";
-            // 
-            // lbInstruccion
-            // 
-            this.lbInstruccion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbInstruccion.AutoSize = true;
-            this.lbInstruccion.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbInstruccion.Location = new System.Drawing.Point(108, 0);
-            this.lbInstruccion.Name = "lbInstruccion";
-            this.lbInstruccion.Size = new System.Drawing.Size(487, 55);
-            this.lbInstruccion.TabIndex = 0;
-            this.lbInstruccion.Text = "Escribe aquí abajo como te fue el fin de semana.";
-            // 
-            // txbRespuesta
-            // 
-            this.txbRespuesta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txbRespuesta.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbRespuesta.Location = new System.Drawing.Point(108, 3);
-            this.txbRespuesta.Multiline = true;
-            this.txbRespuesta.Name = "txbRespuesta";
-            this.txbRespuesta.Size = new System.Drawing.Size(487, 188);
-            this.txbRespuesta.TabIndex = 0;
             // 
             // lbMensajeBoton
             // 
@@ -194,6 +194,7 @@
             this.Text = "PreguntaContexto";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PreguntaContexto1_Load);
+            this.Move += new System.EventHandler(this.PreguntaContexto1_Move);
             this.tableLayoutPanelPrincipal.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

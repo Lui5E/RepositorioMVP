@@ -22,13 +22,22 @@ namespace BilboMVP
             this.Location = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
             this.MinimumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
             this.MaximumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
-            this.MaximizeBox = true;
+            
         }
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            PreguntaPanas Panas = new PreguntaPanas();
-            Panas.ShowDialog();
+            PantallaPrincipal.Panas = new PreguntaPanas();
+            PantallaPrincipal.Panas.ShowDialog();
+        }
+
+        private void PreguntaContexto1_Move(object sender, EventArgs e)
+        {
+            if ((Location.X != 0) || (Location.Y != 0))
+            {
+                Location = new Point(0, 0);
+
+            }
         }
     }
 }
