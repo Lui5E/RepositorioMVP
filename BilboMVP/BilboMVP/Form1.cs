@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
+using MySql.Data.MySqlClient;
 
 namespace BilboMVP
 {
@@ -19,11 +20,23 @@ namespace BilboMVP
         public bool ExisteDispositivo = false;
         public FilterInfoCollection DispositivoDeVideo;
         public VideoCaptureDevice FuenteDeVideo = null;
+        public int NumImagen = 1;
+        public static bool Sesion_Activa =false;   //Bandera para saver si esta activa una sesión
+        public static string Fecha_Actual;   
+        //Datos del alumno que inicio sesión
+        public static string Nombre_Alumno;
+        public static int Grado_Alumno;
+        public static string Grupo_Alumno;
+        public static int Tipo_Cuestionario_Alumno;
+        //Variables que se pueden acceder desde otros formularios
         public static Bitmap Imagen = null;
+        public static MySqlConnectionStringBuilder constructor;   //Creación del constructor de conexión
+        public static MySqlConnection conexion;      //Creación del objeto de conexión
+        //Instancias a formularios
         public static Loggin loggin;        //Instancia de formulario Loggin
         public static PreguntaContexto1 contexto1;  //Instancia de formulario Contexto
         public static PreguntaPanas Panas;  //Intancia de formulario Panas
-        public int NumImagen = 1;
+        //
         public PantallaPrincipal()
         {
             InitializeComponent();
@@ -113,10 +126,28 @@ namespace BilboMVP
             tableLayoutPanel1.MinimumSize = this.MinimumSize;
             tableLayoutPanel1.MaximumSize = this.MaximumSize;
             this.MaximizeBox = true;
+            //Establecimiento de la conexión a la BD
+            try
+            {
+                constructor = new MySqlConnectionStringBuilder();
+                constructor.Server = "localhost";
+                constructor.UserID = "root";
+                constructor.Password = "";
+                constructor.Database = "bilbo";
+                conexion = new MySqlConnection(constructor.ToString());
+                conexion.Open();
+                conexion.Close();
+                MessageBox.Show("Conexión establecida");
+            }
+            catch(Exception Exepcion)
+            {
+                MessageBox.Show("Se ha producido un error al crear la conexión:  \n\n" + Exepcion.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conexion.Close();
+            }
+            //
         }
 
         
-
         private void PantallaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             TerminarFuenteDeVideo();

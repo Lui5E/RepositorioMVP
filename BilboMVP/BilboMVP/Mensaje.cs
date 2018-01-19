@@ -26,6 +26,8 @@ namespace BilboMVP
             this.MinimumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
             this.MaximumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
             this.MaximizeBox = true;
+            String[] nombres = PantallaPrincipal.Nombre_Alumno.Split(' ');
+            lbSaludo.Text = "Buenos días "+nombres[0];
         }
 
         private void timer1_Tick(object sender, EventArgs e)

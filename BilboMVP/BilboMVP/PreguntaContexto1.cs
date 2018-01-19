@@ -22,7 +22,8 @@ namespace BilboMVP
             this.Location = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Location;
             this.MinimumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
             this.MaximumSize = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Size;
-            
+            String[] nombres = PantallaPrincipal.Nombre_Alumno.Split(' ');
+            lbSaludo.Text = "Hola " + nombres[0];
         }
 
         private void btnContinuar_Click(object sender, EventArgs e)

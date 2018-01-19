@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Net;
 
 namespace BilboMVP
 {
@@ -53,10 +57,59 @@ namespace BilboMVP
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            //Si se autentifico
-            Mensaje mensajeform = new Mensaje();
-            mensajeform.ShowDialog();
-            //
+            if(Autentificacion())   //Si se autentifico
+            {
+                PantallaPrincipal.Sesion_Activa = true;
+                Obtener_fecha_actual();
+                Mensaje mensajeform = new Mensaje();
+                mensajeform.ShowDialog();
+            }
+        }
+
+        private bool Autentificacion()
+        {
+            bool valor = false;
+            //Validación de que el usaurio ha ingresado un nombre de usuario y una contraseña
+            if(txbCorreo.Text!="" && txbContra.Text!="")
+            {
+                //Consulta de datos del alumno con la BD
+                MySqlCommand comando = new MySqlCommand("SELECT * FROM alumnos", PantallaPrincipal.conexion);
+                PantallaPrincipal.conexion.Open();
+                MySqlDataReader resultado = comando.ExecuteReader();
+                if (resultado.HasRows)
+                {
+                    while (resultado.Read())
+                    {
+                        //Si el nombre del usaurio y contraseña coinciden
+                        if((resultado.GetValue(1).ToString()==txbCorreo.Text) && (resultado.GetValue(2).ToString()==txbContra.Text))
+                        {
+                            PantallaPrincipal.Nombre_Alumno = resultado.GetValue(3).ToString();
+                            PantallaPrincipal.Grado_Alumno = Convert.ToInt16(resultado.GetValue(4));
+                            PantallaPrincipal.Grupo_Alumno = resultado.GetValue(5).ToString();
+                            PantallaPrincipal.Tipo_Cuestionario_Alumno = Convert.ToInt16(resultado.GetValue(6));
+                            valor = true;
+                        }
+                    }
+                    if(valor==false)
+                    {
+                        MessageBox.Show("El usuario no existe");
+                    }
+
+                }
+                resultado.Close();
+                PantallaPrincipal.conexion.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ingresa todos los datos solicitados");
+                
+            }
+            return valor;
+        }
+        private void Obtener_fecha_actual()
+        {
+            DateTime Hoy = DateTime.Today;
+            PantallaPrincipal.Fecha_Actual = Hoy.ToString("yyyy-MM-dd");
         }
     }
 }
