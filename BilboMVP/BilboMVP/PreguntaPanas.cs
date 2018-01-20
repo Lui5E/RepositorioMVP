@@ -44,8 +44,58 @@ namespace BilboMVP
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            Despedida despedida = new Despedida();
-            despedida.ShowDialog();
+            //Verificar que haya contestado 
+            if ()
+            {
+                //Guardar la respuesta
+                PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 0] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 0];
+                PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 1] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+                PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 2] = txbRespuesta.Text;
+                //
+                //Checar si estoy en la ultima posición "final matriz"
+                if (PantallaPrincipal.index_pregunta == (Convert.ToInt16(PantallaPrincipal.Cuestionario[PantallaPrincipal.Cuestionario.GetLength(0), 1])) - 1)
+                {
+                    //Si estoy en la ultima posición
+                    PantallaPrincipal.despedida = new Despedida();
+                    PantallaPrincipal.despedida.ShowDialog();
+                }
+                else
+                {
+                    //Si no estoy en la ultima posición
+                    PantallaPrincipal.index_pregunta++;
+                    int siguiente_formulario = Convert.ToInt16(PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 1]);
+                    if (siguiente_formulario == 1)
+                    {
+                        //Recargar el formulario
+                        lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+                        txbRespuesta.Text = "";
+                    }
+                    else if (siguiente_formulario == 2)
+                    {
+                        PantallaPrincipal.Panas = new PreguntaPanas();
+                        PantallaPrincipal.Panas.ShowDialog();
+                    }
+                }
+                PantallaPrincipal.Panas = new PreguntaPanas();
+                PantallaPrincipal.Panas.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Conteste lo que se le pide porfavor");
+            }
+
+        }
+
+        private bool Verificar_respuestas()
+        {
+            bool retorno = false;
+            for(int i=1; i<=20; i++)
+            {
+                if((txbRespuesta+i).text !="")
+                {
+
+                }
+            }
         }
     }
 }

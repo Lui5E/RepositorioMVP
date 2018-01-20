@@ -37,8 +37,17 @@ namespace BilboMVP
             PantallaPrincipal.loggin.Close();
             timer1.Stop();
             timer1.Enabled = false;
-            PantallaPrincipal.contexto1 = new PreguntaContexto1();
-            PantallaPrincipal.contexto1.ShowDialog();
+            if(Convert.ToInt16(PantallaPrincipal.Cuestionario[0,1])==1)
+            {
+                PantallaPrincipal.contexto1 = new PreguntaContexto1();
+                PantallaPrincipal.contexto1.ShowDialog();
+            }
+            else
+            {
+                PantallaPrincipal.Panas = new PreguntaPanas();
+                PantallaPrincipal.Panas.ShowDialog();
+            }
+            
             this.Close();
         }
 
@@ -57,7 +66,7 @@ namespace BilboMVP
         }
         private void Cargar_Cuestionario()
         {
-            int sesion_cuestionario_id = -1;
+            PantallaPrincipal.sesion_cuestionario_id = -1;
             string cadena_comando = "SELECT sesion_cuestionario_id FROM sesion WHERE fecha_sesion='" + PantallaPrincipal.Fecha_Actual + "' AND sesion_alumno_tipo_cuestionario='" + PantallaPrincipal.Tipo_Cuestionario_Alumno+"'";
             MySqlCommand comando = new MySqlCommand(cadena_comando, PantallaPrincipal.conexion);
             PantallaPrincipal.conexion.Open();
@@ -66,7 +75,7 @@ namespace BilboMVP
             {
                 while (resultado.Read())
                 {
-                    sesion_cuestionario_id = Convert.ToInt16(resultado.GetValue(0));
+                    PantallaPrincipal.sesion_cuestionario_id = Convert.ToInt16(resultado.GetValue(0));
                 }
             }
             else
@@ -75,19 +84,18 @@ namespace BilboMVP
             }
             resultado.Close();
             PantallaPrincipal.conexion.Close();
-            if (sesion_cuestionario_id >= 1)
+            if (PantallaPrincipal.sesion_cuestionario_id >= 1)
             {
                 //Contar los registros retornados por la consulta
-                MySqlCommand comandoCount = new MySqlCommand("SELECT COUNT(ID) numero_instruccion, tipo_instruccion, instruccion FROM cuestionarios WHERE cuestionario_id = '" + Convert.ToInt16(sesion_cuestionario_id) + "'", PantallaPrincipal.conexion);
+                MySqlCommand comandoCount = new MySqlCommand("SELECT COUNT(ID) numero_instruccion, tipo_instruccion, instruccion FROM cuestionarios WHERE cuestionario_id = '" + Convert.ToInt16(PantallaPrincipal.sesion_cuestionario_id) + "'", PantallaPrincipal.conexion);
                 PantallaPrincipal.conexion.Open();
-                //MySqlDataReader resultadoCount = comandoCount.ExecuteReader();
                 int filas = Convert.ToInt16(comandoCount.ExecuteScalar());
-                PantallaPrincipal.Cuestionario = new string[filas, 3];
-                MessageBox.Show(filas.ToString());
-                //resultadoCount.Close();
+                PantallaPrincipal.Cuestionario = new string[filas, 3];  //Creacion matriz Cuestionario
+                PantallaPrincipal.Respuestas = new string[filas, 3];    //Creacion matriz Respuestas
+                MessageBox.Show(filas.ToString());  
                 PantallaPrincipal.conexion.Close();
                 //
-                MySqlCommand comando2 = new MySqlCommand("SELECT numero_instruccion, tipo_instruccion, instruccion FROM cuestionarios WHERE cuestionario_id = '"+Convert.ToInt16(sesion_cuestionario_id)+"'", PantallaPrincipal.conexion);
+                MySqlCommand comando2 = new MySqlCommand("SELECT numero_instruccion, tipo_instruccion, instruccion FROM cuestionarios WHERE cuestionario_id = '"+Convert.ToInt16(PantallaPrincipal.sesion_cuestionario_id)+"'", PantallaPrincipal.conexion);
                 PantallaPrincipal.conexion.Open();
                 MySqlDataReader resultado2 = comando2.ExecuteReader();
                 int index = 0;
@@ -101,12 +109,6 @@ namespace BilboMVP
                         index++;
                     }
                 }
-                
-                for(int i=0; i<filas; i++)
-                {
-                    MessageBox.Show(PantallaPrincipal.Cuestionario[i,0].ToString()+ PantallaPrincipal.Cuestionario[i, 1].ToString()+ PantallaPrincipal.Cuestionario[i, 2].ToString());
-                }
-                
                 resultado2.Close();
                 PantallaPrincipal.conexion.Close();
             }

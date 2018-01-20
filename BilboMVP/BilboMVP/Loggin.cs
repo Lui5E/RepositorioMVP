@@ -83,6 +83,7 @@ namespace BilboMVP
                         //Si el nombre del usaurio y contraseña coinciden
                         if((resultado.GetValue(1).ToString()==txbCorreo.Text) && (resultado.GetValue(2).ToString()==txbContra.Text))
                         {
+                            PantallaPrincipal.ID_Alumno = Convert.ToInt16(resultado.GetValue(0));
                             PantallaPrincipal.Nombre_Alumno = resultado.GetValue(3).ToString();
                             PantallaPrincipal.Grado_Alumno = Convert.ToInt16(resultado.GetValue(4));
                             PantallaPrincipal.Grupo_Alumno = resultado.GetValue(5).ToString();

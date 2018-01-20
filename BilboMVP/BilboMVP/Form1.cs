@@ -22,14 +22,19 @@ namespace BilboMVP
         public VideoCaptureDevice FuenteDeVideo = null;
         public int NumImagen = 1;
         public static bool Sesion_Activa =false;   //Bandera para saver si esta activa una sesión
-        public static string Fecha_Actual;   
+        public static string Fecha_Actual;
+        public static int sesion_cuestionario_id;
+        public static int index_pregunta = 0;       //Orden de la pregunta a presentar del cuestionario
         //Datos del alumno que inicio sesión
+        public static int ID_Alumno;
         public static string Nombre_Alumno;
         public static int Grado_Alumno;
         public static string Grupo_Alumno;
         public static int Tipo_Cuestionario_Alumno;
-        //Objeto con el contenido del cuestionario a aplicar en la sesión
+        //Matriz con el contenido del cuestionario a aplicar en la sesión
         public static string[,] Cuestionario;
+        //Matriz con las respuestas del alumno
+        public static string[,] Respuestas;
         //Variables que se pueden acceder desde otros formularios
         public static Bitmap Imagen = null;
         public static MySqlConnectionStringBuilder constructor;   //Creación del constructor de conexión
@@ -38,6 +43,7 @@ namespace BilboMVP
         public static Loggin loggin;        //Instancia de formulario Loggin
         public static PreguntaContexto1 contexto1;  //Instancia de formulario Contexto
         public static PreguntaPanas Panas;  //Intancia de formulario Panas
+        public static Despedida despedida;  //Instancia de formulario Despadida
         //
         public PantallaPrincipal()
         {
@@ -146,7 +152,6 @@ namespace BilboMVP
                 MessageBox.Show("Se ha producido un error al crear la conexión:  \n\n" + Exepcion.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
             }
-            //
         }
 
         
