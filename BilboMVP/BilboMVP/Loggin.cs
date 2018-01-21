@@ -112,5 +112,24 @@ namespace BilboMVP
             DateTime Hoy = DateTime.Today;
             PantallaPrincipal.Fecha_Actual = Hoy.ToString("yyyy-MM-dd");
         }
+
+        private void txbContra_Enter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txbContra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if((int)e.KeyChar==(int)Keys.Enter)
+            {
+                if (Autentificacion())   //Si se autentifico
+                {
+                    PantallaPrincipal.Sesion_Activa = true;
+                    Obtener_fecha_actual();
+                    Mensaje mensajeform = new Mensaje();
+                    mensajeform.ShowDialog();
+                }
+            }
+        }
     }
 }

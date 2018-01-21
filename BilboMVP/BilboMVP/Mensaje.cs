@@ -29,7 +29,7 @@ namespace BilboMVP
             String[] nombres = PantallaPrincipal.Nombre_Alumno.Split(' ');
             lbSaludo.Text = "Buenos días "+nombres[0];
             Cargar_Cuestionario();
-            //timer1.Enabled = true;
+            timer1.Enabled = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -92,7 +92,7 @@ namespace BilboMVP
                 int filas = Convert.ToInt16(comandoCount.ExecuteScalar());
                 PantallaPrincipal.Cuestionario = new string[filas, 3];  //Creacion matriz Cuestionario
                 PantallaPrincipal.Respuestas = new string[filas, 3];    //Creacion matriz Respuestas
-                MessageBox.Show(filas.ToString());  
+                //MessageBox.Show(filas.ToString());  
                 PantallaPrincipal.conexion.Close();
                 //
                 MySqlCommand comando2 = new MySqlCommand("SELECT numero_instruccion, tipo_instruccion, instruccion FROM cuestionarios WHERE cuestionario_id = '"+Convert.ToInt16(PantallaPrincipal.sesion_cuestionario_id)+"'", PantallaPrincipal.conexion);
@@ -108,6 +108,7 @@ namespace BilboMVP
                         PantallaPrincipal.Cuestionario[index, 2] = resultado2.GetValue(2).ToString();
                         index++;
                     }
+                    
                 }
                 resultado2.Close();
                 PantallaPrincipal.conexion.Close();

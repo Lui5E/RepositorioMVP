@@ -53,6 +53,8 @@
             this.txbContra.Name = "txbContra";
             this.txbContra.Size = new System.Drawing.Size(167, 26);
             this.txbContra.TabIndex = 10;
+            this.txbContra.Enter += new System.EventHandler(this.txbContra_Enter);
+            this.txbContra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbContra_KeyPress);
             // 
             // txbCorreo
             // 

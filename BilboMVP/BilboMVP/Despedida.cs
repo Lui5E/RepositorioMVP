@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace BilboMVP
 {
@@ -31,6 +32,11 @@ namespace BilboMVP
             CenterToScreen();
             Ypos = Location.Y;
             Xpos = Location.X;
+            for(int i=0; i<=PantallaPrincipal.Respuestas.GetLength(0)-1; i++)
+            {
+                MessageBox.Show("Respuesta No: "+i+" , "+PantallaPrincipal.Respuestas[i,2]);
+            }
+            Almacenar_respuestas();
         }
 
         private void Despedida_Move(object sender, EventArgs e)
@@ -39,6 +45,44 @@ namespace BilboMVP
             {
                 Location = new Point(Xpos, Ypos);
             }
+        }
+
+        private void Almacenar_respuestas()
+        {
+            try
+            {
+                int Alumno_id = Convert.ToInt16(PantallaPrincipal.ID_Alumno);
+                int Cuestionario_id = Convert.ToInt16(PantallaPrincipal.sesion_cuestionario_id);
+                int Numero_respuesta = Convert.ToInt16(PantallaPrincipal.Respuestas[0, 0]);
+                int Tipo_respuesta = Convert.ToInt16(PantallaPrincipal.Respuestas[0, 1]);
+                string Respuesta = PantallaPrincipal.Respuestas[0, 2];
+                string cadena_comando1 = "INSERT INTO respuestas_alumnos VALUES(" + Alumno_id + "," + Cuestionario_id + "," + Numero_respuesta + "," + Tipo_respuesta + ",'" + Respuesta + "')";
+                MySqlCommand comando = new MySqlCommand(cadena_comando1, PantallaPrincipal.conexion);
+                PantallaPrincipal.conexion.Open();
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Prueba directa exitosa");
+                PantallaPrincipal.conexion.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Prueba directa fallida");
+            }
+            for (int i=0; i<=(Convert.ToInt16(PantallaPrincipal.Cuestionario.GetLength(0))) - 1; i++)
+            {
+                try
+                {
+                    string cadena_comando1 = "INSERT INTO respuestas_alumnos VALUES("+PantallaPrincipal.ID_Alumno+ "," +PantallaPrincipal.sesion_cuestionario_id+ "," +PantallaPrincipal.Respuestas[i, 0]+ "," +PantallaPrincipal.Respuestas[i, 1]+ ",'" + PantallaPrincipal.Respuestas[i, 2] + "')";
+                    MySqlCommand comando = new MySqlCommand(cadena_comando1, PantallaPrincipal.conexion);
+                    PantallaPrincipal.conexion.Open();
+                    comando.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("No se pudieron guardar las respuestas del alumno");
+                }
+                PantallaPrincipal.conexion.Close();
+            }
+            
         }
     }
 }

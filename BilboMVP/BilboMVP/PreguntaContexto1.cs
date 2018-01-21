@@ -42,8 +42,10 @@ namespace BilboMVP
                 PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 1] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
                 PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 2] = txbRespuesta.Text;
                 //
+                //MessageBox.Show("Posición actual" + PantallaPrincipal.index_pregunta);
+                //MessageBox.Show("Ultima posición" + ((Convert.ToInt16(PantallaPrincipal.Cuestionario.GetLength(0))) - 1).ToString());
                 //Checar si estoy en la ultima posición "final matriz"
-                if (PantallaPrincipal.index_pregunta == (Convert.ToInt16(PantallaPrincipal.Cuestionario[PantallaPrincipal.Cuestionario.GetLength(0), 1])) - 1)
+                if (PantallaPrincipal.index_pregunta == Convert.ToInt16(PantallaPrincipal.Cuestionario.GetLength(0)) - 1)
                 {
                     //Si estoy en la ultima posición
                     PantallaPrincipal.despedida = new Despedida();
@@ -54,6 +56,7 @@ namespace BilboMVP
                     //Si no estoy en la ultima posición
                     PantallaPrincipal.index_pregunta++;
                     int siguiente_formulario = Convert.ToInt16(PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 1]);
+                    //MessageBox.Show("Siguiente formulario" + siguiente_formulario);
                     if (siguiente_formulario == 1)
                     {
                         //Recargar el formulario
@@ -63,11 +66,10 @@ namespace BilboMVP
                     else if (siguiente_formulario == 2)
                     {
                         PantallaPrincipal.Panas = new PreguntaPanas();
-                        PantallaPrincipal.Panas.ShowDialog();
+                        PantallaPrincipal.Panas.Show();
                     }
                 }
-                PantallaPrincipal.Panas = new PreguntaPanas();
-                PantallaPrincipal.Panas.ShowDialog();
+                
             }
             else
             {
