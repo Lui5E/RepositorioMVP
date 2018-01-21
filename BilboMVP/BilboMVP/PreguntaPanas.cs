@@ -87,7 +87,7 @@ namespace BilboMVP
             {
                 //Guardar la respuesta
                 PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 0] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 0];
-                PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 1] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+                PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 1] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 1];
                 PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 2] = txbRespuesta1.Text;
                 if ((txbRespuesta2.Text == "1") || (txbRespuesta2.Text == "2") || (txbRespuesta2.Text == "3") || (txbRespuesta2.Text == "4") || (txbRespuesta2.Text == "5"))
                 {

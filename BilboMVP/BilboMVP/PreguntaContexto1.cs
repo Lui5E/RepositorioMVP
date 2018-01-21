@@ -39,7 +39,7 @@ namespace BilboMVP
             {
                 //Guardar la respuesta
                 PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 0] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 0];
-                PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 1] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+                PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 1] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 1];
                 PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 2] = txbRespuesta.Text;
                 //
                 //MessageBox.Show("Posición actual" + PantallaPrincipal.index_pregunta);
