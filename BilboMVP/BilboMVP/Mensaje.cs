@@ -28,8 +28,16 @@ namespace BilboMVP
             this.MaximizeBox = true;
             String[] nombres = PantallaPrincipal.Nombre_Alumno.Split(' ');
             lbSaludo.Text = "Buenos días "+nombres[0];
-            Cargar_Cuestionario();
-            timer1.Enabled = true;
+            if(Cargar_Cuestionario())
+            {
+                timer1.Enabled = true;
+            }
+            else
+            {
+                this.Close();
+                PantallaPrincipal.loggin.Close();
+            }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -64,8 +72,9 @@ namespace BilboMVP
                 Location = new Point(0, 0);
             }
         }
-        private void Cargar_Cuestionario()
+        private bool Cargar_Cuestionario()
         {
+            bool retorno = false;
             PantallaPrincipal.sesion_cuestionario_id = -1;
             string cadena_comando = "SELECT sesion_cuestionario_id FROM sesion WHERE fecha_sesion='" + PantallaPrincipal.Fecha_Actual + "' AND sesion_alumno_tipo_cuestionario='" + PantallaPrincipal.Tipo_Cuestionario_Alumno+"'";
             MySqlCommand comando = new MySqlCommand(cadena_comando, PantallaPrincipal.conexion);
@@ -80,7 +89,7 @@ namespace BilboMVP
             }
             else
             {
-                MessageBox.Show("No se encontro un cuestionario para ese alumno");
+                MessageBox.Show("No tienes cuestionario que contestar el día de hoy");
             }
             resultado.Close();
             PantallaPrincipal.conexion.Close();
@@ -108,13 +117,12 @@ namespace BilboMVP
                         PantallaPrincipal.Cuestionario[index, 2] = resultado2.GetValue(2).ToString();
                         index++;
                     }
-                    
+                    retorno = true;
                 }
                 resultado2.Close();
                 PantallaPrincipal.conexion.Close();
             }
-            
-
+            return retorno;
         }
     }
 }

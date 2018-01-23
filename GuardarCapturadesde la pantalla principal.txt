@@ -1,0 +1,2 @@
+PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturaForm2" + Numero.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            Numero++;
