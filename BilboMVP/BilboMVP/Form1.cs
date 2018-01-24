@@ -35,6 +35,7 @@ namespace BilboMVP
         public static string[,] Cuestionario;
         //Matriz con las respuestas del alumno
         public static string[,] Respuestas;
+        public static string[] Respuestas_API;
         //Variables que se pueden acceder desde otros formularios
         public static Bitmap Imagen = null;
         public static MySqlConnectionStringBuilder constructor;   //Creación del constructor de conexión
@@ -149,7 +150,7 @@ namespace BilboMVP
             }
             catch(Exception Exepcion)
             {
-                MessageBox.Show("Se ha producido un error al crear la conexión:  \n\n" + Exepcion.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se logro establecer conexión con el servidor:  \n\n" + Exepcion.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 conexion.Close();
             }
         }

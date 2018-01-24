@@ -8,11 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.IO;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using System.Runtime.InteropServices;
+using System.Net;
 
 namespace BilboMVP
 {
     public partial class PreguntaContexto1 : Form
     {
+        public int numero_captura = 1;
+        public string respuesta_puntuaje = "";
         public PreguntaContexto1()
         {
             InitializeComponent();
@@ -27,7 +35,7 @@ namespace BilboMVP
             lbSaludo.Text = "Hola " + nombres[0];
             //Mostramos instrucción
             lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
-            
+            timerCapturaContexto.Enabled = true;
 
             
         }
@@ -42,6 +50,8 @@ namespace BilboMVP
                 PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 1] = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 1];
                 PantallaPrincipal.Respuestas[PantallaPrincipal.index_pregunta, 2] = txbRespuesta.Text;
                 //
+                timerCapturaContexto.Enabled = false;
+                timerCapturaContexto.Stop();
                 //MessageBox.Show("Posición actual" + PantallaPrincipal.index_pregunta);
                 //MessageBox.Show("Ultima posición" + ((Convert.ToInt16(PantallaPrincipal.Cuestionario.GetLength(0))) - 1).ToString());
                 //Checar si estoy en la ultima posición "final matriz"
@@ -62,6 +72,8 @@ namespace BilboMVP
                         //Recargar el formulario
                         lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
                         txbRespuesta.Text = "";
+                        timerCapturaContexto.Enabled = true;
+                        timerCapturaContexto.Start();
                     }
                     else if (siguiente_formulario == 2)
                     {
@@ -85,6 +97,81 @@ namespace BilboMVP
                 Location = new Point(0, 0);
 
             }
+        }
+
+        private void timerCapturaContexto_Tick(object sender, EventArgs e)
+        {
+            PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturacontexto"+numero_captura+".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            string imageFilePath = Application.StartupPath + "\\capturas\\capturacontexto" + numero_captura + ".jpg";
+            numero_captura++;
+            MakeRequest(imageFilePath);
+        }
+
+        //Funciones de la API
+        static byte[] GetImageAsByteArray(string imageFilePath)
+        {
+            FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
+            //MessageBox.Show(imageFilePath);
+            BinaryReader binaryReader = new BinaryReader(fileStream);
+            return binaryReader.ReadBytes((int)fileStream.Length);
+        }
+
+        public async void MakeRequest(string imageFilePath)
+        {
+            var client = new HttpClient();
+
+            // Request headers - replace this example key with your valid key.
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "f5048231427a4e288ceb67880438b52b"); // 
+
+            // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   URI below with "westcentralus".
+            string uri = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
+            HttpResponseMessage response;
+            string responseContent;
+
+            // Request body. Try this sample with a locally stored JPEG image.
+            byte[] byteData = GetImageAsByteArray(imageFilePath);
+
+            using (var content = new ByteArrayContent(byteData))
+            {
+                // This example uses content type "application/octet-stream".
+                // The other content types you can use are "application/json" and "multipart/form-data".
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                response = await client.PostAsync(uri, content);
+                responseContent = response.Content.ReadAsStringAsync().Result;
+                
+            }
+
+            // A peek at the raw JSON response.
+            //MessageBox.Show(responseContent);
+
+            // Processing the JSON into manageable objects.
+            JToken rootToken = JArray.Parse(responseContent).First;
+
+            // First token is always the faceRectangle identified by the API.
+            JToken faceRectangleToken = rootToken.First;
+
+            // Second token is all emotion scores.
+            JToken scoresToken = rootToken.Last;
+
+            // Show all face rectangle dimensions
+            JEnumerable<JToken> faceRectangleSizeList = faceRectangleToken.First.Children();
+            foreach (var size in faceRectangleSizeList)
+            {
+                //MessageBox.Show(size.ToString());
+            }
+
+            // Show all scores
+            JEnumerable<JToken> scoreList = scoresToken.First.Children();
+            respuesta_puntuaje = "";
+            foreach (var score in scoreList)
+            {
+                //MessageBox.Show(score.ToString());
+                respuesta_puntuaje += score.ToString();
+            }
+            PantallaPrincipal.Respuestas_API[PantallaPrincipal.index_pregunta] = respuesta_puntuaje;
+            MessageBox.Show(PantallaPrincipal.Respuestas_API[PantallaPrincipal.index_pregunta]);
         }
     }
 }

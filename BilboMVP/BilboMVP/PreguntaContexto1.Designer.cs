@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbSaludo = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lbMensajeBoton = new System.Windows.Forms.Label();
             this.btnContinuar = new System.Windows.Forms.Button();
+            this.timerCapturaContexto = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelPrincipal.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -182,6 +184,11 @@
             this.btnContinuar.UseVisualStyleBackColor = true;
             this.btnContinuar.Click += new System.EventHandler(this.btnContinuar_Click);
             // 
+            // timerCapturaContexto
+            // 
+            this.timerCapturaContexto.Interval = 3000;
+            this.timerCapturaContexto.Tick += new System.EventHandler(this.timerCapturaContexto_Tick);
+            // 
             // PreguntaContexto1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,5 +227,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label lbMensajeBoton;
         private System.Windows.Forms.Button btnContinuar;
+        private System.Windows.Forms.Timer timerCapturaContexto;
     }
 }

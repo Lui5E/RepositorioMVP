@@ -1,0 +1,5 @@
+"anger”: contempt”: ”disgust”: ”fear:” ”happiness:” ”neutral”: ”sadness”: ”surprise”: 1
+206 caracteres por resultado API
+207 caracteres (con separador) por resultado API
+37080 caracteres por 3 minutos de resultado API
+37260 caracteres (con separador) por 3 minutos de resultado API	0.03726Mbytes

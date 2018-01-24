@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lbContinuar = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@
             this.tableLayoutPanelRespuesta20 = new System.Windows.Forms.TableLayoutPanel();
             this.txbRespuesta20 = new System.Windows.Forms.TextBox();
             this.lbRespuesta20 = new System.Windows.Forms.Label();
+            this.timerCapturaPANAS = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelPrincipal.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -1107,6 +1109,11 @@
             this.lbRespuesta20.TabIndex = 1;
             this.lbRespuesta20.Text = "20. Asustado";
             // 
+            // timerCapturaPANAS
+            // 
+            this.timerCapturaPANAS.Interval = 3000;
+            this.timerCapturaPANAS.Tick += new System.EventHandler(this.timerCapturaPANAS_Tick);
+            // 
             // PreguntaPanas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1257,5 +1264,6 @@
         private System.Windows.Forms.Label lbRespuesta19;
         private System.Windows.Forms.TextBox txbRespuesta20;
         private System.Windows.Forms.Label lbRespuesta20;
+        private System.Windows.Forms.Timer timerCapturaPANAS;
     }
 }

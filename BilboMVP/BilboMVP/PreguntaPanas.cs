@@ -334,5 +334,10 @@ namespace BilboMVP
                 e.Handled = true;
             }
         }
+
+        private void timerCapturaPANAS_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

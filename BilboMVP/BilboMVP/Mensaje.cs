@@ -101,6 +101,7 @@ namespace BilboMVP
                 int filas = Convert.ToInt16(comandoCount.ExecuteScalar());
                 PantallaPrincipal.Cuestionario = new string[filas, 3];  //Creacion matriz Cuestionario
                 PantallaPrincipal.Respuestas = new string[filas, 3];    //Creacion matriz Respuestas
+                PantallaPrincipal.Respuestas_API = new string[filas];   //Creacion vector Respuestas de la API
                 //MessageBox.Show(filas.ToString());  
                 PantallaPrincipal.conexion.Close();
                 //

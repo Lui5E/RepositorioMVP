@@ -76,7 +76,7 @@ namespace BilboMVP
             {
                 try
                 {
-                    string cadena_comando1 = "INSERT INTO respuestas_alumnos VALUES("+PantallaPrincipal.ID_Alumno+ "," +PantallaPrincipal.sesion_cuestionario_id+ "," +PantallaPrincipal.Respuestas[i, 0]+ "," +PantallaPrincipal.Respuestas[i, 1]+ ",'" + PantallaPrincipal.Respuestas[i, 2] + "')";
+                    string cadena_comando1 = "INSERT INTO respuestas_alumnos VALUES('"+PantallaPrincipal.Fecha_Actual+"',"+PantallaPrincipal.ID_Alumno+ "," +PantallaPrincipal.sesion_cuestionario_id+ "," +PantallaPrincipal.Respuestas[i, 0]+ "," +PantallaPrincipal.Respuestas[i, 1]+ ",'" + PantallaPrincipal.Respuestas[i, 2] + "','"+PantallaPrincipal.Respuestas_API[i]+"')";
                     MySqlCommand comando = new MySqlCommand(cadena_comando1, PantallaPrincipal.conexion);
                     PantallaPrincipal.conexion.Open();
                     comando.ExecuteNonQuery();

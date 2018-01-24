@@ -1,2 +1,0 @@
-USUARIO:	usuario02@correo.com
-CONTRASEÑA:	usuario.02
