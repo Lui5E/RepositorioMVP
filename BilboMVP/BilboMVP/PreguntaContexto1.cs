@@ -116,7 +116,9 @@ namespace BilboMVP
             FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
             //MessageBox.Show(imageFilePath);
             BinaryReader binaryReader = new BinaryReader(fileStream);
-            return binaryReader.ReadBytes((int)fileStream.Length);
+            byte[] regreso = binaryReader.ReadBytes((int)fileStream.Length);
+            fileStream.Close();
+            return regreso;
         }
 
         public async void MakeRequest(string imageFilePath)
@@ -143,7 +145,7 @@ namespace BilboMVP
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                 response = await client.PostAsync(uri, content);
                 responseContent = response.Content.ReadAsStringAsync().Result;
-                
+
             }
 
             // A peek at the raw JSON response.
@@ -173,8 +175,14 @@ namespace BilboMVP
                 //MessageBox.Show(score.ToString());
                 respuesta_puntuaje += score.ToString();
             }
-            PantallaPrincipal.Respuestas_API[PantallaPrincipal.index_pregunta] +="@"+ respuesta_puntuaje;
+            PantallaPrincipal.Respuestas_API[PantallaPrincipal.index_pregunta] += "@" + respuesta_puntuaje;
+            Eliminar_captura_almacenada(imageFilePath);
             //MessageBox.Show(PantallaPrincipal.Respuestas_API[PantallaPrincipal.index_pregunta]);
+        }
+
+        private void Eliminar_captura_almacenada(string imageFilePath)
+        {
+            File.Delete(imageFilePath);
         }
 
         private void PreguntaContexto1_Activated(object sender, EventArgs e)

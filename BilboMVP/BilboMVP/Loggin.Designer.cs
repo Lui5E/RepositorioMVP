@@ -38,9 +38,9 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(281, 232);
+            this.btnIngresar.Location = new System.Drawing.Point(352, 239);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(112, 40);
+            this.btnIngresar.Size = new System.Drawing.Size(117, 47);
             this.btnIngresar.TabIndex = 11;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -51,7 +51,8 @@
             this.txbContra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbContra.Location = new System.Drawing.Point(226, 157);
             this.txbContra.Name = "txbContra";
-            this.txbContra.Size = new System.Drawing.Size(167, 26);
+            this.txbContra.PasswordChar = '*';
+            this.txbContra.Size = new System.Drawing.Size(243, 26);
             this.txbContra.TabIndex = 10;
             this.txbContra.Enter += new System.EventHandler(this.txbContra_Enter);
             this.txbContra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbContra_KeyPress);
@@ -61,7 +62,7 @@
             this.txbCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbCorreo.Location = new System.Drawing.Point(226, 114);
             this.txbCorreo.Name = "txbCorreo";
-            this.txbCorreo.Size = new System.Drawing.Size(167, 26);
+            this.txbCorreo.Size = new System.Drawing.Size(243, 26);
             this.txbCorreo.TabIndex = 9;
             // 
             // lbContra
@@ -88,7 +89,7 @@
             // 
             this.lbTitulo.AutoSize = true;
             this.lbTitulo.Font = new System.Drawing.Font("Lucida Sans Unicode", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitulo.Location = new System.Drawing.Point(65, 27);
+            this.lbTitulo.Location = new System.Drawing.Point(81, 27);
             this.lbTitulo.Name = "lbTitulo";
             this.lbTitulo.Size = new System.Drawing.Size(328, 39);
             this.lbTitulo.TabIndex = 6;
@@ -98,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 293);
+            this.ClientSize = new System.Drawing.Size(501, 307);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txbContra);
             this.Controls.Add(this.txbCorreo);

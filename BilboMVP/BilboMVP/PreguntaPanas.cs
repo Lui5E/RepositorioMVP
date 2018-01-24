@@ -58,6 +58,7 @@ namespace BilboMVP
             {
                 timerCapturaPANAS.Enabled = false;
                 timerCapturaPANAS.Stop();
+                Limpiar_textbox();
                 //Checar si estoy en la ultima posición "final matriz"
                 if (PantallaPrincipal.index_pregunta == (Convert.ToInt16(PantallaPrincipal.Cuestionario.GetLength(0))) - 1)
                 {
@@ -77,7 +78,7 @@ namespace BilboMVP
                         lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
                         timerCapturaPANAS.Enabled = true;
                         timerCapturaPANAS.Start();
-                        //txbRespuesta.Text = "";
+                        
                     }
                     else if (siguiente_formulario == 1)
                     {
@@ -190,6 +191,31 @@ namespace BilboMVP
                 }
             }
             return retorno;
+        }
+
+        private void Limpiar_textbox()
+        {
+            txbRespuesta1.Text = "";
+            txbRespuesta2.Text = "";
+            txbRespuesta3.Text = "";
+            txbRespuesta4.Text = "";
+            txbRespuesta5.Text = "";
+            txbRespuesta6.Text = "";
+            txbRespuesta7.Text = "";
+            txbRespuesta8.Text = "";
+            txbRespuesta9.Text = "";
+            txbRespuesta10.Text = "";
+            txbRespuesta11.Text = "";
+            txbRespuesta12.Text = "";
+            txbRespuesta13.Text = "";
+            txbRespuesta14.Text = "";
+            txbRespuesta15.Text = "";
+            txbRespuesta16.Text = "";
+            txbRespuesta17.Text = "";
+            txbRespuesta18.Text = "";
+            txbRespuesta19.Text = "";
+            txbRespuesta20.Text = "";
+
         }
 
         private void txbRespuesta1_KeyPress(object sender, KeyPressEventArgs e)
@@ -371,7 +397,9 @@ namespace BilboMVP
             FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
             //MessageBox.Show(imageFilePath);
             BinaryReader binaryReader = new BinaryReader(fileStream);
-            return binaryReader.ReadBytes((int)fileStream.Length);
+            byte[] regreso = binaryReader.ReadBytes((int)fileStream.Length);
+            fileStream.Close();
+            return regreso;
         }
 
         public async void MakeRequest(string imageFilePath)
@@ -429,7 +457,13 @@ namespace BilboMVP
                 respuesta_puntuaje += score.ToString();
             }
             PantallaPrincipal.Respuestas_API[PantallaPrincipal.index_pregunta] += "@" + respuesta_puntuaje; ;
+            Eliminar_captura_almacenada(imageFilePath);
             //MessageBox.Show(PantallaPrincipal.Respuestas_API[PantallaPrincipal.index_pregunta]);
+        }
+
+        private void Eliminar_captura_almacenada(string imageFilePath)
+        {
+            File.Delete(imageFilePath);
         }
 
         private void PreguntaPanas_Activated(object sender, EventArgs e)
