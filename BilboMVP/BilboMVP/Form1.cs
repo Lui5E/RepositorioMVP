@@ -25,6 +25,8 @@ namespace BilboMVP
         public static string Fecha_Actual;
         public static int sesion_cuestionario_id;
         public static int index_pregunta = 0;       //Orden de la pregunta a presentar del cuestionario
+        public static bool activarContexto = true;    //Bandera para saber cuando se debe activar ek timerCapturaContexto
+        public static bool activarPANAS = true;    //Bandera para saber cuando se debe activar ek timerCapturaPANAS
         //Datos del alumno que inicio sesión
         public static int ID_Alumno;
         public static string Nombre_Alumno;

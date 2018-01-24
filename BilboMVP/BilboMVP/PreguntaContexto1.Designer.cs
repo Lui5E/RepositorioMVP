@@ -200,6 +200,8 @@
             this.Name = "PreguntaContexto1";
             this.Text = "PreguntaContexto";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.PreguntaContexto1_Activated);
+            this.Deactivate += new System.EventHandler(this.PreguntaContexto1_Deactivate);
             this.Load += new System.EventHandler(this.PreguntaContexto1_Load);
             this.Move += new System.EventHandler(this.PreguntaContexto1_Move);
             this.tableLayoutPanelPrincipal.ResumeLayout(false);

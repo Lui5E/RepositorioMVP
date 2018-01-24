@@ -1127,6 +1127,7 @@
             this.Name = "PreguntaPanas";
             this.Text = "PreguntaPanas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.PreguntaPanas_Activated);
             this.Load += new System.EventHandler(this.PreguntaPanas_Load);
             this.Move += new System.EventHandler(this.PreguntaPanas_Move);
             this.tableLayoutPanelPrincipal.ResumeLayout(false);
