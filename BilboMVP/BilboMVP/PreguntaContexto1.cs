@@ -34,7 +34,7 @@ namespace BilboMVP
             String[] nombres = PantallaPrincipal.Nombre_Alumno.Split(' ');
             lbSaludo.Text = "Hola " + nombres[0];
             //Mostramos instrucción
-            lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+            //lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
             timerCapturaContexto.Enabled = true;
 
             
@@ -79,9 +79,11 @@ namespace BilboMVP
                     else if (siguiente_formulario == 2)
                     {
                         //MessageBox.Show("Sigue Panas");
+                        this.Hide();
                         PantallaPrincipal.Panas = new PreguntaPanas();
-                        PantallaPrincipal.Panas.Show();
                         PantallaPrincipal.activarPANAS = true;
+                        PantallaPrincipal.Panas.Show();
+                        
                     }
                 }
                 
@@ -104,8 +106,10 @@ namespace BilboMVP
 
         private void timerCapturaContexto_Tick(object sender, EventArgs e)
         {
-            PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturacontexto"+numero_captura+".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            string imageFilePath = Application.StartupPath + "\\capturas\\capturacontexto" + numero_captura + ".jpg";
+            //PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturacontexto"+numero_captura+".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            //string imageFilePath = Application.StartupPath + "\\capturas\\capturacontexto" + numero_captura + ".jpg";
+            PantallaPrincipal.Imagen.Save(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\capturacontexto" + numero_captura + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            string imageFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\capturacontexto" + numero_captura + ".jpg";
             numero_captura++;
             MakeRequest(imageFilePath);
         }
@@ -193,7 +197,6 @@ namespace BilboMVP
                 lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
                 timerCapturaContexto.Enabled = true;
                 timerCapturaContexto.Start();
-                MessageBox.Show("Contexto activo");
             }
             
         }

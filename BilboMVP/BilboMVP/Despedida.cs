@@ -32,10 +32,6 @@ namespace BilboMVP
             CenterToScreen();
             Ypos = Location.Y;
             Xpos = Location.X;
-            for(int i=0; i<=PantallaPrincipal.Respuestas.GetLength(0)-1; i++)
-            {
-                MessageBox.Show("Respuesta No: "+i+" , "+PantallaPrincipal.Respuestas[i,2]);
-            }
             Almacenar_respuestas();
         }
 
@@ -49,29 +45,6 @@ namespace BilboMVP
 
         private void Almacenar_respuestas()
         {
-            /*int Alumno_id = Convert.ToInt16(PantallaPrincipal.ID_Alumno);
-            int Cuestionario_id = Convert.ToInt16(PantallaPrincipal.sesion_cuestionario_id);
-            int Numero_respuesta = Convert.ToInt16(PantallaPrincipal.Respuestas[0, 0]);
-            MessageBox.Show(PantallaPrincipal.Respuestas[0, 1]);
-            int Tipo_respuesta = Convert.ToInt16(PantallaPrincipal.Respuestas[0, 1]);
-            string Respuesta = PantallaPrincipal.Respuestas[0, 2];
-            string cadena_comando1 = "INSERT INTO respuestas_alumnos VALUES(" + Alumno_id + "," + Cuestionario_id + "," + Numero_respuesta + "," + Tipo_respuesta + ",'" + Respuesta + "')";
-            MessageBox.Show(cadena_comando1);
-            try
-            {
-                
-                //string cadena_comando1 = "INSERT INTO respuestas_alumnos VALUES(" + Alumno_id + "," + Cuestionario_id + "," + Numero_respuesta + "," + Tipo_respuesta + ",'" + Respuesta + "')";
-                MessageBox.Show(cadena_comando1);
-                MySqlCommand comando = new MySqlCommand(cadena_comando1, PantallaPrincipal.conexion);
-                PantallaPrincipal.conexion.Open();
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Prueba directa exitosa");
-                PantallaPrincipal.conexion.Close();
-            }
-            catch
-            {
-                MessageBox.Show("Prueba directa fallida");
-            }*/
             for (int i=0; i<=(Convert.ToInt16(PantallaPrincipal.Cuestionario.GetLength(0))) - 1; i++)
             {
                 try

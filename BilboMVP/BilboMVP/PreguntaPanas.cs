@@ -71,7 +71,7 @@ namespace BilboMVP
                     //Si no estoy en la ultima posición
                     PantallaPrincipal.index_pregunta++;
                     int siguiente_formulario = Convert.ToInt16(PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 1]);
-                    MessageBox.Show(siguiente_formulario.ToString());
+                    //MessageBox.Show(siguiente_formulario.ToString());
                     if (siguiente_formulario == 2)
                     {
                         //Recargar el formulario
@@ -82,10 +82,11 @@ namespace BilboMVP
                     }
                     else if (siguiente_formulario == 1)
                     {
-                        MessageBox.Show("Sigue Contexto");
+                        //MessageBox.Show("Sigue Contexto");
                         this.Hide();
-                        PantallaPrincipal.contexto1.Show();
                         PantallaPrincipal.activarContexto = true;
+                        PantallaPrincipal.contexto1.Show();
+                        
 
                         //Form Formulario = (Form)PantallaPrincipal.contexto1.Controls["PreguntaContexto1"];
                         //((Timer)Formulario.Controls["timerCapturaContexto"]).Enabled = true;
@@ -105,7 +106,7 @@ namespace BilboMVP
         private bool Verificar_respuestas()
         {
             bool retorno = false;
-            MessageBox.Show("Entro a verificar respuestas");
+            //MessageBox.Show("Entro a verificar respuestas");
             if((txbRespuesta1.Text=="1")||(txbRespuesta1.Text == "2") || (txbRespuesta1.Text == "3") || (txbRespuesta1.Text == "4") || (txbRespuesta1.Text == "5"))
             {
                 //Guardar la respuesta
@@ -385,8 +386,10 @@ namespace BilboMVP
 
         private void timerCapturaPANAS_Tick(object sender, EventArgs e)
         {
-            PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturaPANAS" + numero_captura + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            string imageFilePath = Application.StartupPath + "\\capturas\\capturaPANAS" + numero_captura + ".jpg";
+            //PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturaPANAS" + numero_captura + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            //string imageFilePath = Application.StartupPath + "\\capturas\\capturaPANAS" + numero_captura + ".jpg";
+            PantallaPrincipal.Imagen.Save(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\capturaPANAS" + numero_captura + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            string imageFilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\capturaPANAS" + numero_captura + ".jpg";
             numero_captura++;
             MakeRequest(imageFilePath);
         }
@@ -474,7 +477,6 @@ namespace BilboMVP
                 lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
                 timerCapturaPANAS.Enabled = true;
                 timerCapturaPANAS.Start();
-                MessageBox.Show("Panas activo");
             }
             
         }
