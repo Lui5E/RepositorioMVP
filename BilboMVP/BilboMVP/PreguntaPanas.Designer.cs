@@ -491,9 +491,9 @@
             this.lbRespuesta3.AutoSize = true;
             this.lbRespuesta3.Location = new System.Drawing.Point(34, 13);
             this.lbRespuesta3.Name = "lbRespuesta3";
-            this.lbRespuesta3.Size = new System.Drawing.Size(93, 20);
+            this.lbRespuesta3.Size = new System.Drawing.Size(70, 20);
             this.lbRespuesta3.TabIndex = 1;
-            this.lbRespuesta3.Text = "3. Emocionado";
+            this.lbRespuesta3.Text = "3. Excitado";
             // 
             // tableLayoutPanelRespuesta4
             // 
@@ -527,9 +527,9 @@
             this.lbRespuesta4.AutoSize = true;
             this.lbRespuesta4.Location = new System.Drawing.Point(34, 13);
             this.lbRespuesta4.Name = "lbRespuesta4";
-            this.lbRespuesta4.Size = new System.Drawing.Size(68, 20);
+            this.lbRespuesta4.Size = new System.Drawing.Size(84, 20);
             this.lbRespuesta4.TabIndex = 1;
-            this.lbRespuesta4.Text = "4. Enojado";
+            this.lbRespuesta4.Text = "4. Disgustado";
             // 
             // tableLayoutPanelRespuesta5
             // 
@@ -708,9 +708,9 @@
             this.lbRespuesta9.AutoSize = true;
             this.lbRespuesta9.Location = new System.Drawing.Point(34, 13);
             this.lbRespuesta9.Name = "lbRespuesta9";
-            this.lbRespuesta9.Size = new System.Drawing.Size(79, 20);
+            this.lbRespuesta9.Size = new System.Drawing.Size(101, 20);
             this.lbRespuesta9.TabIndex = 1;
-            this.lbRespuesta9.Text = "9. Entusiasta";
+            this.lbRespuesta9.Text = "9. Entusiasmado";
             // 
             // tableLayoutPanelRespuesta10
             // 
@@ -961,9 +961,9 @@
             this.lbRespuesta16.AutoSize = true;
             this.lbRespuesta16.Location = new System.Drawing.Point(34, 13);
             this.lbRespuesta16.Name = "lbRespuesta16";
-            this.lbRespuesta16.Size = new System.Drawing.Size(101, 20);
+            this.lbRespuesta16.Size = new System.Drawing.Size(79, 20);
             this.lbRespuesta16.TabIndex = 1;
-            this.lbRespuesta16.Text = "16. Determinado";
+            this.lbRespuesta16.Text = "16. Decidido";
             // 
             // tableLayoutPanelRespuesta17
             // 
@@ -1033,9 +1033,9 @@
             this.lbRespuesta18.AutoSize = true;
             this.lbRespuesta18.Location = new System.Drawing.Point(34, 13);
             this.lbRespuesta18.Name = "lbRespuesta18";
-            this.lbRespuesta18.Size = new System.Drawing.Size(73, 20);
+            this.lbRespuesta18.Size = new System.Drawing.Size(87, 20);
             this.lbRespuesta18.TabIndex = 1;
-            this.lbRespuesta18.Text = "18. Inquieto";
+            this.lbRespuesta18.Text = "18. Intranquilo";
             // 
             // tableLayoutPanelRespuesta19
             // 
@@ -1105,9 +1105,9 @@
             this.lbRespuesta20.AutoSize = true;
             this.lbRespuesta20.Location = new System.Drawing.Point(34, 14);
             this.lbRespuesta20.Name = "lbRespuesta20";
-            this.lbRespuesta20.Size = new System.Drawing.Size(79, 20);
+            this.lbRespuesta20.Size = new System.Drawing.Size(87, 20);
             this.lbRespuesta20.TabIndex = 1;
-            this.lbRespuesta20.Text = "20. Asustado";
+            this.lbRespuesta20.Text = "20. Temeroso";
             // 
             // timerCapturaPANAS
             // 
