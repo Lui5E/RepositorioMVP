@@ -38,6 +38,7 @@ namespace BilboMVP
         //Matriz con las respuestas del alumno
         public static string[,] Respuestas;
         public static string[] Respuestas_API;
+        public static double[,] Promedios_emociones;
         //Variables que se pueden acceder desde otros formularios
         public static Bitmap Imagen = null;
         public static MySqlConnectionStringBuilder constructor;   //Creación del constructor de conexión

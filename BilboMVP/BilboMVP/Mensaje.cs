@@ -102,6 +102,7 @@ namespace BilboMVP
                 PantallaPrincipal.Cuestionario = new string[filas, 3];  //Creacion matriz Cuestionario
                 PantallaPrincipal.Respuestas = new string[filas, 3];    //Creacion matriz Respuestas
                 PantallaPrincipal.Respuestas_API = new string[filas];   //Creacion vector Respuestas de la API
+                PantallaPrincipal.Promedios_emociones = new double[filas, 8];   //Creacion matriz Promedios emociones de la API
                 //MessageBox.Show(filas.ToString());  
                 PantallaPrincipal.conexion.Close();
                 //
