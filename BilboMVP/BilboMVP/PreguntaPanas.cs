@@ -40,8 +40,8 @@ namespace BilboMVP
             this.MaximizeBox = true;
             TableLayoutPanel Princial = (TableLayoutPanel)PantallaPrincipal.Panas.Controls["tableLayoutPanelPrincipal"];
             TableLayoutPanel Secundario = (TableLayoutPanel)Princial.Controls["tableLayoutPanel1"];
-            ((Label)Secundario.Controls["lbInstruccion"]).Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
-            
+            //((Label)Secundario.Controls["lbInstruccion"]).Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+            ((TextBox)Secundario.Controls["txbInstruccion"]).Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
         }
 
         private void PreguntaPanas_Move(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace BilboMVP
                     if (siguiente_formulario == 2)
                     {
                         //Recargar el formulario
-                        lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+                        txbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
                         timerCapturaPANAS.Enabled = true;
                         timerCapturaPANAS.Start();
                         
@@ -93,11 +93,12 @@ namespace BilboMVP
                         PantallaPrincipal.activarContexto = true;
                         PantallaPrincipal.contexto1.Show();
                         
-
+                        //Ya se activa el timer al verificar que la forma esta activa
                         //Form Formulario = (Form)PantallaPrincipal.contexto1.Controls["PreguntaContexto1"];
                         //((Timer)Formulario.Controls["timerCapturaContexto"]).Enabled = true;
-                        //TableLayoutPanel Secundario = (TableLayoutPanel)Princial.Controls["tableLayoutPanel1"];
-                        //((Label)Secundario.Controls["lbInstruccion"]).Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+                        TableLayoutPanel Princial = (TableLayoutPanel)PantallaPrincipal.Panas.Controls["tableLayoutPanelPrincipal"];
+                        TableLayoutPanel Secundario = (TableLayoutPanel)Princial.Controls["tableLayoutPanel1"];
+                        ((Label)Secundario.Controls["lbInstruccion"]).Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
                     }
                 }
                 
@@ -392,6 +393,7 @@ namespace BilboMVP
 
         private void timerCapturaPANAS_Tick(object sender, EventArgs e)
         {
+            //Guardar en carpeta "pero no se tienen permisos, por ello se guarda en Documents"
             //PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturaPANAS" + numero_captura + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             //string imageFilePath = Application.StartupPath + "\\capturas\\capturaPANAS" + numero_captura + ".jpg";
             PantallaPrincipal.Imagen.Save(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\capturaPANAS" + numero_captura + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -421,7 +423,7 @@ namespace BilboMVP
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
             //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
             //   URI below with "westcentralus".
-            string uri = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
+            string uri = "https://westus.api.cognitive.microsoft.com/face/v1.0/detect?";
             HttpResponseMessage response;
             string responseContent;
 
@@ -486,11 +488,16 @@ namespace BilboMVP
             if(PantallaPrincipal.activarPANAS)
             {
                 PantallaPrincipal.activarPANAS = false;
-                lbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
+                txbInstruccion.Text = PantallaPrincipal.Cuestionario[PantallaPrincipal.index_pregunta, 2];
                 timerCapturaPANAS.Enabled = true;
                 timerCapturaPANAS.Start();
             }
             
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -112,6 +112,7 @@ namespace BilboMVP
 
         private void timerCapturaContexto_Tick(object sender, EventArgs e)
         {
+            //Guardar en carpeta "pero no se tienen permisos, por ello se guarda en Documents"
             //PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturacontexto"+numero_captura+".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             //string imageFilePath = Application.StartupPath + "\\capturas\\capturacontexto" + numero_captura + ".jpg";
             PantallaPrincipal.Imagen.Save(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\capturacontexto" + numero_captura + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);

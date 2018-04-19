@@ -34,7 +34,6 @@
             this.lbContinuar = new System.Windows.Forms.Label();
             this.btnContinuar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbInstruccion = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelMetrica = new System.Windows.Forms.Panel();
             this.tableLayoutPanelMetrica = new System.Windows.Forms.TableLayoutPanel();
@@ -107,6 +106,7 @@
             this.txbRespuesta20 = new System.Windows.Forms.TextBox();
             this.lbRespuesta20 = new System.Windows.Forms.Label();
             this.timerCapturaPANAS = new System.Windows.Forms.Timer(this.components);
+            this.txbInstruccion = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelPrincipal.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -204,7 +204,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Controls.Add(this.lbInstruccion, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txbInstruccion, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -212,18 +212,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(822, 75);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // lbInstruccion
-            // 
-            this.lbInstruccion.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbInstruccion.AutoSize = true;
-            this.lbInstruccion.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbInstruccion.Location = new System.Drawing.Point(85, 23);
-            this.lbInstruccion.Name = "lbInstruccion";
-            this.lbInstruccion.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lbInstruccion.Size = new System.Drawing.Size(0, 29);
-            this.lbInstruccion.TabIndex = 0;
-            this.lbInstruccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -1114,6 +1103,23 @@
             this.timerCapturaPANAS.Interval = 3000;
             this.timerCapturaPANAS.Tick += new System.EventHandler(this.timerCapturaPANAS_Tick);
             // 
+            // txbInstruccion
+            // 
+            this.txbInstruccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbInstruccion.BackColor = System.Drawing.SystemColors.Control;
+            this.txbInstruccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbInstruccion.Enabled = false;
+            this.txbInstruccion.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbInstruccion.HideSelection = false;
+            this.txbInstruccion.Location = new System.Drawing.Point(85, 12);
+            this.txbInstruccion.Multiline = true;
+            this.txbInstruccion.Name = "txbInstruccion";
+            this.txbInstruccion.ReadOnly = true;
+            this.txbInstruccion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txbInstruccion.Size = new System.Drawing.Size(651, 50);
+            this.txbInstruccion.TabIndex = 30;
+            this.txbInstruccion.TabStop = false;
+            // 
             // PreguntaPanas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1193,7 +1199,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label lbInstruccion;
         private System.Windows.Forms.Label lbContinuar;
         private System.Windows.Forms.Button btnContinuar;
         private System.Windows.Forms.Panel panelMetrica;
@@ -1266,5 +1271,6 @@
         private System.Windows.Forms.TextBox txbRespuesta20;
         private System.Windows.Forms.Label lbRespuesta20;
         private System.Windows.Forms.Timer timerCapturaPANAS;
+        private System.Windows.Forms.TextBox txbInstruccion;
     }
 }

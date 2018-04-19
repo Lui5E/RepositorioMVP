@@ -26,8 +26,7 @@ namespace BilboMVP
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PantallaPrincipal.Imagen.Save(Application.StartupPath + "\\capturas\\capturaForm2" + Numero.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            Numero++;
+            
         }
 
         private void Loggin_Load(object sender, EventArgs e)

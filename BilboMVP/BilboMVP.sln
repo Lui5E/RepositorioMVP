@@ -5,7 +5,9 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilboMVP", "BilboMVP\BilboMVP.csproj", "{545F1533-342F-404D-B478-B37793B448A0}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MVP BILBO x64", "MVP BILBO x64.vdproj", "{C75302DF-23B4-42EE-92D0-D4F6526523C9}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BILBO Ins x64", "BILBO Ins x64\BILBO Ins x64.vdproj", "{CE4C0440-0C9C-46BA-8405-1718D68469C0}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BILBO Ins x32", "BILBO Ins x32\BILBO Ins x32.vdproj", "{8DE9DC3E-7682-4C21-A5F5-6773C827CE01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +19,10 @@ Global
 		{545F1533-342F-404D-B478-B37793B448A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{545F1533-342F-404D-B478-B37793B448A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{545F1533-342F-404D-B478-B37793B448A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C75302DF-23B4-42EE-92D0-D4F6526523C9}.Debug|Any CPU.ActiveCfg = Debug
-		{C75302DF-23B4-42EE-92D0-D4F6526523C9}.Release|Any CPU.ActiveCfg = Release
+		{CE4C0440-0C9C-46BA-8405-1718D68469C0}.Debug|Any CPU.ActiveCfg = Debug
+		{CE4C0440-0C9C-46BA-8405-1718D68469C0}.Release|Any CPU.ActiveCfg = Release
+		{8DE9DC3E-7682-4C21-A5F5-6773C827CE01}.Debug|Any CPU.ActiveCfg = Debug
+		{8DE9DC3E-7682-4C21-A5F5-6773C827CE01}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

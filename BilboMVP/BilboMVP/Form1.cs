@@ -58,10 +58,13 @@ namespace BilboMVP
         //Función para cargar las camaras existentes en el combobox
         public void CargarDispositivos(FilterInfoCollection Dispositivos)
         {
-            for (int i = 0; i < Dispositivos.Count; i++) ;
+            for (int i = 0; i < Dispositivos.Count; i++)
+            {
+                cbxDispositivos.Items.Add(Dispositivos[i].Name.ToString());
+                cbxDispositivos.Text = cbxDispositivos.Items[i].ToString();
+            }
 
-            cbxDispositivos.Items.Add(Dispositivos[0].Name.ToString());
-            cbxDispositivos.Text = cbxDispositivos.Items[0].ToString();
+            
             if(Dispositivos.Count > 2)
             {
                 cbxDispositivos.Visible = true;
