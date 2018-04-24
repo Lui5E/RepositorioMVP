@@ -42,7 +42,7 @@ namespace PruebaConexion_EmotionAPI
             var client = new HttpClient();
 
             // Request headers - replace this example key with your valid key.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "f5048231427a4e288ceb67880438b52b"); // 
+            client.DefaultRequestHeaders.Add("3bcd830af74a48ddac52df8e635c795f", "259a781053d1435b8082930394a7e416"); // 
 
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
             //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
